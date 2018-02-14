@@ -10,12 +10,14 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include <algorithm>
 
 using std::cin;
 using std::cout;
 using std::endl;
 using std::string;
 using std::vector;
+using std::max;
 
 /****************************************************
 ** CONSTRUCTORS
@@ -124,21 +126,31 @@ Character* Game::getPlayer2() {
 void Game::startGame() {
     // Initialize the round number to 0
     round = 0;
-    // Initialize variables to keep track of strength
-    int p1Strength, p2Strength;
+    // Initialize a flag to know if the game should keep going.
+    bool everyoneAlive = true;
+    // Clear cin
+    cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+    cin.clear();
     do {
-        runRound();
-        // Get the players' strength to see if anyone is dead
-        p1Strength = getPlayer1()->getStrength();
-        p2Strength = getPlayer2()->getStrength();
-    } while (p1Strength > 0 && p2Strength > 0);
+        if (round > 0) {
+            // Pause between rounds
+            string tmp;
+            cout << "Press enter to run a new round" << endl;
+            getline(cin, tmp);
+        }
+        // Run the round
+        everyoneAlive = runRound();
+    } while (everyoneAlive);
 }
 
 /****************************************************
-** Description: runs a round
+** Description: runs a round. Returns true if the
+** game should continue (no one has died).
 ****************************************************/
 
-void Game::runRound() {
+bool Game::runRound() {
+    bool everyoneAlive = true;
+
     // Increment the round
     round++;
 
@@ -150,54 +162,30 @@ void Game::runRound() {
 
     // Start with player 1's attack
     cout << "Player 1 attacks!" << endl;
-    runAttack(player1, player2);
 
-    // Then let player 2 attack
-    cout << "Player 2 attacks!" << endl;
-    runAttack(player2, player1);
+    int attackTotal = player1->attack(player2);
+    player2->defend(player1, attackTotal);
+
+    // Check to see if player2 is still alive
+    if (player2->isAlive()) {
+        // Then let player 2 attack
+        cout << "Player 2 attacks!" << endl;
+
+        int attackTotal = player2->attack(player1);
+        player1->defend(player2, attackTotal);
+    } else {
+        everyoneAlive = false;
+        cout << "Player 2 has died. Game over." << endl;
+    }
+
+    // Check to see if player 1 died in the attack
+    if (!player1->isAlive()) {
+        everyoneAlive = false;
+        cout << "Player 1 has died. Game over." << endl;
+    }
 
     // Print a separator
-    cout << "-------------------------------------------" << endl;
-    cout << "Press enter to run a new round" << endl;
-    cin.get();
-}
+    cout << "-------------------------------------------" << endl << endl;
 
-/****************************************************
-** Description: runs an attack, takes pointers to
-** the attacker and defender. these should be
-** player 1 or player 2 respectively.
-****************************************************/
-
-void Game::runAttack(Character* attacker, Character* defender) {
-    // Get attack info
-    int attackTotal = 0;
-    int currentRoll = 0;
-    int numAttackDice = attacker->getAttack().numDice;
-    int numAttackDiceSides = attacker->getAttack().numDiceSides;
-
-    // Make an array for attack dice
-    Die** attackDice = new Die*[numAttackDice];
-    for (int i = 0; i < numAttackDice; i++) {
-        attackDice[i] = new Die(numAttackDiceSides);
-        currentRoll = attackDice[i]->roll();
-        attackTotal += currentRoll;
-        cout << "Added attackDie[" << i << "]: " << attackDice[i] << endl;
-        cout << "Current roll: " << currentRoll << endl;
-        cout << "Attack total: " << attackTotal << endl;
-    }
-
-    // Print out the attack
-    cout << "Attacker type: " << attacker->getName() << endl;
-    cout << "Defender type: " << defender->getName() << ", Armor: " << defender->getArmor() << ", Strength: " << defender->getStrength() << endl;
-    cout << attacker->getName() << "'s attack dice roll: " << "TODO" << endl;
-    cout << defender->getName() << "'s defense dice roll: " << "TODO" << endl;
-    cout << "Total inflicted damage: " << "TODO" << endl;
-    cout << defender->getName() << "'s new strength: " << defender->getStrength() << endl;
-    cout << endl;
-
-    // Clean up the dice
-    for (int i = 0; i < numAttackDice; i++) {
-        delete attackDice[i];
-    }
-    delete [] attackDice;
+    return everyoneAlive;
 }

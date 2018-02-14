@@ -7,13 +7,10 @@
 
 #include "BlueMen.hpp"
 
-BlueMen::BlueMen() : Character("Blue Men", 3, 12)
+BlueMen::BlueMen() : Character("Blue Men", 3, 12, 0)
 {
-    roll_t attack, defense;
-    attack.numDice = 2, defense.numDice = 3;
-    attack.numDiceSides = 10, defense.numDiceSides = 6;
-    setAttack(attack);
-    setDefense(defense);
+    attackRoll.numDice = 2, defenseRoll.numDice = 3;
+    attackRoll.numDiceSides = 10, defenseRoll.numDiceSides = 6;
 }
 
 BlueMen::~BlueMen()
@@ -21,10 +18,9 @@ BlueMen::~BlueMen()
 
 }
 
-int BlueMen::attack() {
+int BlueMen::attack(Character *defender) {
     return 0;
 }
 
-int BlueMen::defend() {
-    return 0;
+void BlueMen::defend(Character *attacker, int attack) {
 }

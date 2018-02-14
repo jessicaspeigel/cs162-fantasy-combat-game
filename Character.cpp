@@ -11,10 +11,12 @@ using std::cout;
 using std::endl;
 using std::string;
 
-Character::Character(std::string name, int armor, int strength) {
+Character::Character(std::string name, int armor, int strength, int numLives) {
     this->name = name;
     this->armor = armor;
     this->strength = strength;
+    this->numLives = numLives;
+    this->isDead = false;
 }
 
 int Character::getArmor() {
@@ -25,6 +27,13 @@ int Character::getStrength() {
     return strength;
 }
 
+void Character::setStrength(int strength) {
+    this->strength = strength;
+    if (strength <= 0) {
+        die();
+    }
+}
+
 roll_t Character::getAttack() {
     return attackRoll;
 }
@@ -33,14 +42,15 @@ roll_t Character::getDefense() {
     return defenseRoll;
 }
 
-void Character::setAttack(roll_t attackRoll) {
-    this->attackRoll = attackRoll;
-}
-
-void Character::setDefense(roll_t defenseRoll) {
-    this->defenseRoll = defenseRoll;
-}
-
 string Character::getName() {
     return this->name;
 }
+
+void Character::die() {
+    isDead = true;
+}
+
+bool Character::isAlive() {
+    return !isDead;
+}
+

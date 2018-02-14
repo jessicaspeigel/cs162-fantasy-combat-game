@@ -7,13 +7,10 @@
 
 #include "Medusa.hpp"
 
-Medusa::Medusa() : Character("Medusa", 3, 8)
+Medusa::Medusa() : Character("Medusa", 3, 8, 0)
 {
-    roll_t attack, defense;
-    attack.numDice = 2, defense.numDice = 1;
-    attack.numDiceSides = 6, defense.numDiceSides = 6;
-    setAttack(attack);
-    setDefense(defense);
+    attackRoll.numDice = 2, defenseRoll.numDice = 1;
+    attackRoll.numDiceSides = 6, defenseRoll.numDiceSides = 6;
 }
 
 Medusa::~Medusa()
@@ -21,10 +18,10 @@ Medusa::~Medusa()
 
 }
 
-int Medusa::attack() {
+int Medusa::attack(Character *defender) {
     return 0;
 }
 
-int Medusa::defend() {
-    return 0;
+void Medusa::defend(Character *attacker, int attack) {
+
 }

@@ -7,13 +7,10 @@
 
 #include "Vampire.hpp"
 
-Vampire::Vampire() : Character("Vampire", 1, 18)
+Vampire::Vampire() : Character("Vampire", 1, 18, 0)
 {
-    roll_t attack, defense;
-    attack.numDice = 1, defense.numDice = 1;
-    attack.numDiceSides = 12, defense.numDiceSides = 6;
-    setAttack(attack);
-    setDefense(defense);
+    attackRoll.numDice = 1, defenseRoll.numDice = 1;
+    attackRoll.numDiceSides = 12, defenseRoll.numDiceSides = 6;
 }
 
 Vampire::~Vampire()
@@ -21,10 +18,9 @@ Vampire::~Vampire()
 
 }
 
-int Vampire::attack() {
+int Vampire::attack(Character *defender) {
     return 0;
 }
 
-int Vampire::defend() {
-    return 0;
+void Vampire::defend(Character *attacker, int attack) {
 }

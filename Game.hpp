@@ -31,8 +31,7 @@ class Game {
         void setPlayer2(Character &player);
         int round;
         void startGame();
-        void runRound();
-        void runAttack(Character* attacker, Character* defender);
+        bool runRound();
 
     public:
         Game();

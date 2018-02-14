@@ -27,8 +27,7 @@ Die::Die(int sides)
     rollValue = -1;
     // Set the sides
     setSides(sides);
-    // Seed the random number generator
-    srand(time(NULL));
+
 }
 
 /****************************************************
@@ -65,6 +64,6 @@ int Die::getRollValue()
 
 int Die::roll()
 {
-    rollValue = rand() % getSides();
+    rollValue = rand() % getSides() + 1;
     return rollValue;
 }

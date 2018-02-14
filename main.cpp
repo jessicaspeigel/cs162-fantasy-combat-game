@@ -8,6 +8,8 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include <ctime>
+#include <cstdlib>
 #include "Menu.hpp"
 #include "InputValidation.hpp"
 #include "Game.hpp"
@@ -18,7 +20,10 @@ using std::endl;
 using std::string;
 using std::vector;
 
+
 int main() {
+    // Seed the random number generator
+    srand(time(NULL));
     // Say hi to the user
     cout << "Welcome to the fantasy combat game!" << endl;
     // Get the main menu ready

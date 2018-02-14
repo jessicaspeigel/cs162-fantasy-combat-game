@@ -7,13 +7,10 @@
 
 #include "HarryPotter.hpp"
 
-HarryPotter::HarryPotter() : Character("Harry Potter", 0, 10)
+HarryPotter::HarryPotter() : Character("Harry Potter", 0, 10, 0)
 {
-    roll_t attack, defense;
-    attack.numDice = 2, defense.numDice = 2;
-    attack.numDiceSides = 6, defense.numDiceSides = 6;
-    setAttack(attack);
-    setDefense(defense);
+    attackRoll.numDice = 2, defenseRoll.numDice = 2;
+    attackRoll.numDiceSides = 6, defenseRoll.numDiceSides = 6;
 }
 
 HarryPotter::~HarryPotter()
@@ -21,10 +18,9 @@ HarryPotter::~HarryPotter()
 
 }
 
-int HarryPotter::attack() {
+int HarryPotter::attack(Character *defender) {
     return 0;
 }
 
-int HarryPotter::defend() {
-    return 0;
+void HarryPotter::defend(Character *attacker, int attack) {
 }
