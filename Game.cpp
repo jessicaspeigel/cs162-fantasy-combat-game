@@ -122,8 +122,16 @@ Character* Game::getPlayer2() {
 ****************************************************/
 
 void Game::startGame() {
+    // Initialize the round number to 0
     round = 0;
-    runRound();
+    // Initialize variables to keep track of strength
+    int p1Strength, p2Strength;
+    do {
+        runRound();
+        // Get the players' strength to see if anyone is dead
+        p1Strength = getPlayer1()->getStrength();
+        p2Strength = getPlayer2()->getStrength();
+    } while (p1Strength > 0 && p2Strength > 0);
 }
 
 /****************************************************
@@ -150,6 +158,8 @@ void Game::runRound() {
 
     // Print a separator
     cout << "-------------------------------------------" << endl;
+    cout << "Press enter to run a new round" << endl;
+    cin.get();
 }
 
 /****************************************************
@@ -159,14 +169,16 @@ void Game::runRound() {
 ****************************************************/
 
 void Game::runAttack(Character* attacker, Character* defender) {
-    // Make a vector for attack dice
-    vector<Die*> attackDice;
+    // Get attack info
     int attackTotal = 0;
     int currentRoll = 0;
     int numAttackDice = attacker->getAttack().numDice;
     int numAttackDiceSides = attacker->getAttack().numDiceSides;
+
+    // Make an array for attack dice
+    Die** attackDice = new Die*[numAttackDice];
     for (int i = 0; i < numAttackDice; i++) {
-        attackDice.push_back(new Die(numAttackDiceSides));
+        attackDice[i] = new Die(numAttackDiceSides);
         currentRoll = attackDice[i]->roll();
         attackTotal += currentRoll;
         cout << "Added attackDie[" << i << "]: " << attackDice[i] << endl;
@@ -182,4 +194,10 @@ void Game::runAttack(Character* attacker, Character* defender) {
     cout << "Total inflicted damage: " << "TODO" << endl;
     cout << defender->getName() << "'s new strength: " << defender->getStrength() << endl;
     cout << endl;
+
+    // Clean up the dice
+    for (int i = 0; i < numAttackDice; i++) {
+        delete attackDice[i];
+    }
+    delete [] attackDice;
 }
