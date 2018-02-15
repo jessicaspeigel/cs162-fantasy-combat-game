@@ -16,32 +16,32 @@ using std::max;
 Barbarian::Barbarian() : Character("Barbarian", 0, 12, 1)
 {
     // Initialize the attack and defense roll values
-//    attackRoll.numDice = 2, defenseRoll.numDice = 2;
-//    attackRoll.numDiceSides = 6, defenseRoll.numDiceSides = 6;
+    attackRoll.numDice = 2, defenseRoll.numDice = 2;
+    attackRoll.numDiceSides = 6, defenseRoll.numDiceSides = 6;
     // Set up the array for attack dice
-//    attackDice = new Die*[attackRoll.numDice];
-//    for (int i = 0; i < attackRoll.numDice; i++) {
-//        attackDice[i] = new Die(attackRoll.numDiceSides);
-//    }
-//    // Set up the array for defense dice
-//    defenseDice = new Die*[defenseRoll.numDice];
-//    for (int i = 0; i < defenseRoll.numDice; i++) {
-//        defenseDice[i] = new Die(defenseRoll.numDiceSides);
-//    }
+    attackDice = new Die*[attackRoll.numDice];
+    for (int i = 0; i < attackRoll.numDice; i++) {
+        attackDice[i] = new Die(attackRoll.numDiceSides);
+    }
+    // Set up the array for defense dice
+    defenseDice = new Die*[defenseRoll.numDice];
+    for (int i = 0; i < defenseRoll.numDice; i++) {
+        defenseDice[i] = new Die(defenseRoll.numDiceSides);
+    }
 }
 
 Barbarian::~Barbarian()
 {
-//    // Clean up the array for attack dice
-//    for (int i = 0; i < attackRoll.numDice; i++) {
-//        delete attackDice[i];
-//    }
-//    delete [] attackDice;
-//    // Clean up the array for defense dice
-//    for (int i = 0; i < defenseRoll.numDice; i++) {
-//        delete defenseDice[i];
-//    }
-//    delete [] defenseDice;
+    // Clean up the array for attack dice
+    for (int i = 0; i < attackRoll.numDice; i++) {
+        delete attackDice[i];
+    }
+    delete [] attackDice;
+    // Clean up the array for defense dice
+    for (int i = 0; i < defenseRoll.numDice; i++) {
+        delete defenseDice[i];
+    }
+    delete [] defenseDice;
 }
 
 int Barbarian::attack(Character *defender) {
@@ -52,12 +52,12 @@ int Barbarian::attack(Character *defender) {
 
     int attackTotal = 0;
     int currentRoll = 0;
-//    for (int i = 0; i < attackRoll.numDice; i++) {
-//        currentRoll  = attackDice[i]->roll();
-//        attackTotal += currentRoll;
-//        // Print the roll for the current die
-//        cout << " die " << (i + 1) << " (" << currentRoll << ")";
-//    }
+    for (int i = 0; i < attackRoll.numDice; i++) {
+        currentRoll  = attackDice[i]->roll();
+        attackTotal += currentRoll;
+        // Print the roll for the current die
+        cout << " die " << (i + 1) << " (" << currentRoll << ")";
+    }
     cout << " for an attack total of " << attackTotal << endl;
     return attackTotal;
 }
@@ -65,12 +65,12 @@ int Barbarian::attack(Character *defender) {
 void Barbarian::defend(Character *attacker, int attackScore) {
     int defenseTotal = 0;
     int currentRoll = 0;
-//    for (int i = 0; i < defenseRoll.numDice; i++) {
-//        currentRoll  = defenseDice[i]->roll();
-//        defenseTotal += currentRoll;
-//        // Print the roll for the current die
-//        cout << " die " << (i + 1) << " (" << currentRoll << ")";
-//    }
+    for (int i = 0; i < defenseRoll.numDice; i++) {
+        currentRoll  = defenseDice[i]->roll();
+        defenseTotal += currentRoll;
+        // Print the roll for the current die
+        cout << " die " << (i + 1) << " (" << currentRoll << ")";
+    }
     cout << " for a defense total of " << defenseTotal << endl;
 
     // Calculate damage and adjust strength

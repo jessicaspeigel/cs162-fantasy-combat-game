@@ -6,7 +6,6 @@
 ****************************************************/
 
 #include "Game.hpp"
-#include "Die.hpp"
 #include <iostream>
 #include <string>
 #include <vector>
@@ -24,8 +23,6 @@ using std::max;
 ****************************************************/
 
 Game::Game() {
-    // Initialize player pointers to null
-    player1 = nullptr, player2 = nullptr;
     // Default constructor prompts user to select characters
     int p1Choice = 0, p2Choice = 0;
     vector<string> charMenuItems = {"Vampire", "Barbarian", "Blue Men", "Medusa", "Harry Potter"};
@@ -34,52 +31,53 @@ Game::Game() {
     charMenu.setPromptText("Select a character for player 1");
     p1Choice = charMenu.showMenu();
     // Create player1
-    // Create player2
+    // I don't want to do this, but I have to declare placeholder objects outside the ifs
+        Barbarian p1Barbarian;
     if (p1Choice == 1) {
         // Vampire
-//        Vampire p1;
-//        setPlayer1(p1);
+        Vampire p1;
+        setPlayer1(p1);
     } else if (p1Choice == 2) {
         // Barbarian
-        Barbarian p1;
-        setPlayer1(p1);
+        setPlayer1(p1Barbarian);
     } else if (p1Choice == 3) {
         // Blue Men
-//        BlueMen p1;
-//        setPlayer1(p1);
+        BlueMen p1;
+        setPlayer1(p1);
     } else if (p1Choice == 4) {
         // Medusa
-//        Medusa p1;
-//        setPlayer1(p1);
+        Medusa p1;
+        setPlayer1(p1);
     } else if (p1Choice == 5) {
         // Harry Potter
-//        HarryPotter p1;
-//        setPlayer1(p1);
+        HarryPotter p1;
+        setPlayer1(p1);
     }
     // Prompt for player 2
     charMenu.setPromptText("Select a character for player 2");
     p2Choice = charMenu.showMenu();
     // Create player2
+    // I don't want to do this, but I have to declare placeholder objects outside the ifs
+    Barbarian p2Barbarian;
     if (p2Choice == 1) {
         // Vampire
-//        Vampire p2;
-//        setPlayer2(p2);
+        Vampire p2;
+        setPlayer2(p2);
     } else if (p2Choice == 2) {
         // Barbarian
-        Barbarian p2;
-        setPlayer2(p2);
+        setPlayer2(p2Barbarian);
     } else if (p2Choice == 3) {
         // Blue Men
-//        BlueMen p2;
-//        setPlayer2(p2);
+        BlueMen p2;
+        setPlayer2(p2);
     } else if (p2Choice == 4) {
         // Medusa
-//        Medusa p2;
-//        setPlayer2(p2);
+        Medusa p2;
+        setPlayer2(p2);
     } else if (p2Choice == 5) {
         // Harry Potter
-//        HarryPotter p2;
-//        setPlayer2(p2);
+        HarryPotter p2;
+        setPlayer2(p2);
     }
     startGame();
 }
@@ -155,6 +153,8 @@ bool Game::runRound() {
 
     // Start with player 1's attack
     cout << "Player 1 attacks! " << endl;
+    cout << "Player 1: " << player1 << " / is alive?: " << player1->isAlive() << endl;
+    cout << "Player 2: " << player2 << " / is alive?: " << player2->isAlive() << endl;
 
     int attackTotal = player1->attack(player2);
     player2->defend(player1, attackTotal);

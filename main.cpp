@@ -13,6 +13,8 @@
 #include "Menu.hpp"
 #include "InputValidation.hpp"
 #include "Game.hpp"
+#include "Character.hpp"
+#include "Barbarian.hpp"
 
 using std::cout;
 using std::cin;
@@ -20,6 +22,25 @@ using std::endl;
 using std::string;
 using std::vector;
 
+//int main() {
+//    // Seed the random number generator
+//    srand(time(NULL));
+//
+//    Character* player1 = nullptr;
+//    Character* player2 = nullptr;
+//
+//    Barbarian p1;
+//    Barbarian p2;
+//
+//    player1 = &p1;
+//    player2 = &p2;
+//
+//    int attackTotal = player1->attack(player2);
+//
+//    player2->defend(player1, attackTotal);
+//
+//    return 0;
+//}
 
 int main() {
     // Seed the random number generator
