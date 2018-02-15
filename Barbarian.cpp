@@ -63,6 +63,7 @@ int Barbarian::attack(Character *defender) {
 }
 
 void Barbarian::defend(Character *attacker, int attackScore) {
+    cout << getName() << "'s defense dice roll: ";
     int defenseTotal = 0;
     int currentRoll = 0;
     for (int i = 0; i < defenseRoll.numDice; i++) {

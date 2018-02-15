@@ -34,11 +34,11 @@ class Character {
         virtual ~Character();
         virtual int attack(Character *defender) = 0;
         virtual void defend(Character *attacker, int attackScore) = 0;
+        virtual void setStrength(int strength);
         virtual void death();
         int getArmor();
         int getStrength();
         bool isAlive();
-        void setStrength(int strength);
         roll_t getAttack();
         roll_t getDefense();
         std::string getName();

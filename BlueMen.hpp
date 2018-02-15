@@ -17,6 +17,7 @@ public:
     ~BlueMen();
     int attack(Character *defender);
     void defend(Character *attacker, int attack);
+    void setStrength(int strength);
 };
 
 #endif //CS162_FANTASY_COMBAT_GAME_BLUEMEN_HPP

@@ -31,54 +31,47 @@ Game::Game() {
     charMenu.setPromptText("Select a character for player 1");
     p1Choice = charMenu.showMenu();
     // Create player1
-    // I don't want to do this, but I have to declare placeholder objects outside the ifs
-        Barbarian p1Barbarian;
+    Character* p1;
     if (p1Choice == 1) {
         // Vampire
-        Vampire p1;
-        setPlayer1(p1);
+        p1 = new Vampire;
     } else if (p1Choice == 2) {
         // Barbarian
-        setPlayer1(p1Barbarian);
+        p1 = new Barbarian;
     } else if (p1Choice == 3) {
         // Blue Men
-        BlueMen p1;
-        setPlayer1(p1);
+        p1 = new BlueMen;
     } else if (p1Choice == 4) {
         // Medusa
-        Medusa p1;
-        setPlayer1(p1);
+        p1 = new Medusa;
     } else if (p1Choice == 5) {
         // Harry Potter
-        HarryPotter p1;
-        setPlayer1(p1);
+        p1 = new HarryPotter;
     }
+    setPlayer1(p1);
     // Prompt for player 2
     charMenu.setPromptText("Select a character for player 2");
     p2Choice = charMenu.showMenu();
     // Create player2
-    // I don't want to do this, but I have to declare placeholder objects outside the ifs
-    Barbarian p2Barbarian;
+    Character* p2;
     if (p2Choice == 1) {
         // Vampire
-        Vampire p2;
-        setPlayer2(p2);
+        p2 = new Vampire;
     } else if (p2Choice == 2) {
         // Barbarian
-        setPlayer2(p2Barbarian);
+        p2 = new Barbarian;
     } else if (p2Choice == 3) {
         // Blue Men
-        BlueMen p2;
-        setPlayer2(p2);
+        p2 = new BlueMen;
     } else if (p2Choice == 4) {
         // Medusa
-        Medusa p2;
-        setPlayer2(p2);
+        p2 = new Medusa;
     } else if (p2Choice == 5) {
         // Harry Potter
-        HarryPotter p2;
-        setPlayer2(p2);
+        p2 = new HarryPotter;
     }
+    setPlayer2(p2);
+    // Start the game
     startGame();
 }
 
@@ -87,19 +80,21 @@ Game::Game() {
 ****************************************************/
 
 Game::~Game() {
-
+    // Delete the dynamically allocated players
+    delete player1;
+    delete player2;
 }
 
 /****************************************************
 ** GETTERS / SETTERS
 ****************************************************/
 
-void Game::setPlayer1(Character &player) {
-    player1 = &player;
+void Game::setPlayer1(Character *player) {
+    player1 = player;
 }
 
-void Game::setPlayer2(Character &player) {
-    player2 = &player;
+void Game::setPlayer2(Character *player) {
+    player2 = player;
 }
 
 Character* Game::getPlayer1() {
@@ -153,8 +148,6 @@ bool Game::runRound() {
 
     // Start with player 1's attack
     cout << "Player 1 attacks! " << endl;
-    cout << "Player 1: " << player1 << " / is alive?: " << player1->isAlive() << endl;
-    cout << "Player 2: " << player2 << " / is alive?: " << player2->isAlive() << endl;
 
     int attackTotal = player1->attack(player2);
     player2->defend(player1, attackTotal);
@@ -164,17 +157,16 @@ bool Game::runRound() {
         // Then let player 2 attack
         cout << "Player 2 attacks!" << endl;
 
-        int attackTotal = player2->attack(player1);
+        attackTotal = player2->attack(player1);
         player1->defend(player2, attackTotal);
+        // Check to see if player 1 died in the attack
+        if (!player1->isAlive()) {
+            everyoneAlive = false;
+            cout << "Player 1 has died. Game over." << endl;
+        }
     } else {
         everyoneAlive = false;
         cout << "Player 2 has died. Game over." << endl;
-    }
-
-    // Check to see if player 1 died in the attack
-    if (!player1->isAlive()) {
-        everyoneAlive = false;
-        cout << "Player 1 has died. Game over." << endl;
     }
 
     // Print a separator

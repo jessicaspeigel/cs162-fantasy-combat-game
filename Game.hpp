@@ -20,8 +20,8 @@ class Game {
     private:
         Character* player1;
         Character* player2;
-        void setPlayer1(Character &player);
-        void setPlayer2(Character &player);
+        void setPlayer1(Character *player);
+        void setPlayer2(Character *player);
         int round;
         void startGame();
         bool runRound();
