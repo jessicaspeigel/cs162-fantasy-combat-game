@@ -7,7 +7,7 @@
 
 #include "HarryPotter.hpp"
 
-HarryPotter::HarryPotter() : Character("Harry Potter", 0, 10, 0)
+HarryPotter::HarryPotter() : Character("Harry Potter", 0, 10, 2)
 {
     attackRoll.numDice = 2, defenseRoll.numDice = 2;
     attackRoll.numDiceSides = 6, defenseRoll.numDiceSides = 6;

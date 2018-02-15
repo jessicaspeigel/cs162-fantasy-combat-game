@@ -7,7 +7,7 @@
 
 #include "Medusa.hpp"
 
-Medusa::Medusa() : Character("Medusa", 3, 8, 0)
+Medusa::Medusa() : Character("Medusa", 3, 8, 1)
 {
     attackRoll.numDice = 2, defenseRoll.numDice = 1;
     attackRoll.numDiceSides = 6, defenseRoll.numDiceSides = 6;

@@ -7,7 +7,7 @@
 
 #include "Vampire.hpp"
 
-Vampire::Vampire() : Character("Vampire", 1, 18, 0)
+Vampire::Vampire() : Character("Vampire", 1, 18, 1)
 {
     attackRoll.numDice = 1, defenseRoll.numDice = 1;
     attackRoll.numDiceSides = 12, defenseRoll.numDiceSides = 6;

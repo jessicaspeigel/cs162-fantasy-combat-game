@@ -37,24 +37,24 @@ Game::Game() {
     // Create player2
     if (p1Choice == 1) {
         // Vampire
-        Vampire p1;
-        setPlayer1(p1);
+//        Vampire p1;
+//        setPlayer1(p1);
     } else if (p1Choice == 2) {
         // Barbarian
         Barbarian p1;
         setPlayer1(p1);
     } else if (p1Choice == 3) {
         // Blue Men
-        BlueMen p1;
-        setPlayer1(p1);
+//        BlueMen p1;
+//        setPlayer1(p1);
     } else if (p1Choice == 4) {
         // Medusa
-        Medusa p1;
-        setPlayer1(p1);
+//        Medusa p1;
+//        setPlayer1(p1);
     } else if (p1Choice == 5) {
         // Harry Potter
-        HarryPotter p1;
-        setPlayer1(p1);
+//        HarryPotter p1;
+//        setPlayer1(p1);
     }
     // Prompt for player 2
     charMenu.setPromptText("Select a character for player 2");
@@ -62,32 +62,25 @@ Game::Game() {
     // Create player2
     if (p2Choice == 1) {
         // Vampire
-        Vampire p2;
-        setPlayer2(p2);
+//        Vampire p2;
+//        setPlayer2(p2);
     } else if (p2Choice == 2) {
         // Barbarian
         Barbarian p2;
         setPlayer2(p2);
     } else if (p2Choice == 3) {
         // Blue Men
-        BlueMen p2;
-        setPlayer2(p2);
+//        BlueMen p2;
+//        setPlayer2(p2);
     } else if (p2Choice == 4) {
         // Medusa
-        Medusa p2;
-        setPlayer2(p2);
+//        Medusa p2;
+//        setPlayer2(p2);
     } else if (p2Choice == 5) {
         // Harry Potter
-        HarryPotter p2;
-        setPlayer2(p2);
+//        HarryPotter p2;
+//        setPlayer2(p2);
     }
-    startGame();
-}
-
-
-Game::Game(Character &player1, Character &player2) {
-    setPlayer1(player1);
-    setPlayer2(player2);
     startGame();
 }
 
@@ -161,7 +154,7 @@ bool Game::runRound() {
     cout << "Round " << round << endl << endl;
 
     // Start with player 1's attack
-    cout << "Player 1 attacks!" << endl;
+    cout << "Player 1 attacks! " << endl;
 
     int attackTotal = player1->attack(player2);
     player2->defend(player1, attackTotal);

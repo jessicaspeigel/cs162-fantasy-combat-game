@@ -14,7 +14,7 @@ private:
 
 public:
     Vampire();
-    virtual ~Vampire();
+    ~Vampire();
     int attack(Character *defender);
     void defend(Character *attacker, int attack);
 };

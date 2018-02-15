@@ -16,13 +16,6 @@
 #include "Die.hpp"
 #include "Menu.hpp"
 
-class Character;
-class Vampire;
-class Barbarian;
-class BlueMen;
-class Medusa;
-class HarryPotter;
-
 class Game {
     private:
         Character* player1;
@@ -35,7 +28,6 @@ class Game {
 
     public:
         Game();
-        Game(Character &player1, Character &player2);
         ~Game();
         Character* getPlayer1();
         Character* getPlayer2();

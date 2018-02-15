@@ -26,15 +26,15 @@ class Character {
         int strength;
         int numLives;
         bool isDead;
-        virtual void die();
         Die** attackDice;
         Die** defenseDice;
 
     public:
-        Character(std::string name, int armor, int strength, int numLives);
-        virtual ~Character() {};
+        Character(std::string name, int armor = 0, int strength = 12, int numLives = 1);
+        virtual ~Character();
         virtual int attack(Character *defender) = 0;
-        virtual void defend(Character *attacker, int attack) = 0;
+        virtual void defend(Character *attacker, int attackScore) = 0;
+        virtual void death();
         int getArmor();
         int getStrength();
         bool isAlive();

@@ -14,9 +14,9 @@ private:
 
 public:
     Barbarian();
-    virtual ~Barbarian();
+    ~Barbarian();
     int attack(Character *defender);
-    void defend(Character *attacker, int attack);
+    void defend(Character *attacker, int attackScore);
 };
 
 #endif //CS162_FANTASY_COMBAT_GAME_BARBARIAN_HPP

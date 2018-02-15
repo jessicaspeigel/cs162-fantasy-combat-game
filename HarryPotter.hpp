@@ -14,7 +14,7 @@ private:
 
 public:
     HarryPotter();
-    virtual ~HarryPotter();
+    ~HarryPotter();
     int attack(Character *defender);
     void defend(Character *attacker, int attack);
 };

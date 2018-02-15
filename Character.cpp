@@ -19,6 +19,11 @@ Character::Character(std::string name, int armor, int strength, int numLives) {
     this->isDead = false;
 }
 
+Character::~Character() {
+
+}
+
+
 int Character::getArmor() {
     return armor;
 }
@@ -30,7 +35,7 @@ int Character::getStrength() {
 void Character::setStrength(int strength) {
     this->strength = strength;
     if (strength <= 0) {
-        die();
+        death();
     }
 }
 
@@ -46,11 +51,10 @@ string Character::getName() {
     return this->name;
 }
 
-void Character::die() {
+void Character::death() {
     isDead = true;
 }
 
 bool Character::isAlive() {
     return !isDead;
 }
-

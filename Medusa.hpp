@@ -14,7 +14,7 @@ private:
 
 public:
     Medusa();
-    virtual ~Medusa();
+    ~Medusa();
     int attack(Character *defender);
     void defend(Character *attacker, int attack);
 };

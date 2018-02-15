@@ -7,7 +7,7 @@
 
 #include "BlueMen.hpp"
 
-BlueMen::BlueMen() : Character("Blue Men", 3, 12, 0)
+BlueMen::BlueMen() : Character("Blue Men", 3, 12, 1)
 {
     attackRoll.numDice = 2, defenseRoll.numDice = 3;
     attackRoll.numDiceSides = 10, defenseRoll.numDiceSides = 6;

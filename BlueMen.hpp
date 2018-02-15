@@ -14,7 +14,7 @@ private:
 
 public:
     BlueMen();
-    virtual ~BlueMen();
+    ~BlueMen();
     int attack(Character *defender);
     void defend(Character *attacker, int attack);
 };
