@@ -16,7 +16,7 @@ public:
     BlueMen();
     ~BlueMen();
     int attack(Character *defender);
-    void defend(Character *attacker, int attack);
+    void defend(int attack);
     void setStrength(int strength);
 };
 

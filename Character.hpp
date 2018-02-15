@@ -23,8 +23,10 @@ class Character {
         roll_t attackRoll;
         roll_t defenseRoll;
         int armor;
-        int strength;
+        int currentStrength;
+        int startStrength;
         int numLives;
+        int currentLife;
         bool isDead;
         Die** attackDice;
         Die** defenseDice;
@@ -33,9 +35,10 @@ class Character {
         Character(std::string name, int armor = 0, int strength = 12, int numLives = 1);
         virtual ~Character();
         virtual int attack(Character *defender) = 0;
-        virtual void defend(Character *attacker, int attackScore) = 0;
+        virtual void defend(int attackScore) = 0;
         virtual void setStrength(int strength);
         virtual void death();
+        virtual void resetStrength();
         int getArmor();
         int getStrength();
         bool isAlive();

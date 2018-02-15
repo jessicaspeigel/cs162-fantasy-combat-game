@@ -61,7 +61,7 @@ int Vampire::attack(Character *defender) {
     return attackTotal;
 }
 
-void Vampire::defend(Character *attacker, int attackScore) {
+void Vampire::defend(int attackScore) {
     // See if the Vampire can charm his opponent into not attacking
     int charmed = rand() % 2;
     if (charmed == 1) {

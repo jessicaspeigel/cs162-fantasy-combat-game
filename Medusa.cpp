@@ -67,7 +67,7 @@ int Medusa::attack(Character *defender) {
     return attackTotal;
 }
 
-void Medusa::defend(Character *attacker, int attackScore) {
+void Medusa::defend(int attackScore) {
     cout << getName() << "'s defense dice roll: ";
     int defenseTotal = 0;
     int currentRoll = 0;

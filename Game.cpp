@@ -150,7 +150,7 @@ bool Game::runRound() {
     cout << "Player 1 attacks! " << endl;
 
     int attackTotal = player1->attack(player2);
-    player2->defend(player1, attackTotal);
+    player2->defend(attackTotal);
 
     // Check to see if player2 is still alive
     if (player2->isAlive()) {
@@ -158,7 +158,7 @@ bool Game::runRound() {
         cout << "Player 2 attacks!" << endl;
 
         attackTotal = player2->attack(player1);
-        player1->defend(player2, attackTotal);
+        player1->defend(attackTotal);
         // Check to see if player 1 died in the attack
         if (!player1->isAlive()) {
             everyoneAlive = false;

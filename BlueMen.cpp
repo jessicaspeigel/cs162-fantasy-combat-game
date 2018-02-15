@@ -61,7 +61,7 @@ int BlueMen::attack(Character *defender) {
     return attackTotal;
 }
 
-void BlueMen::defend(Character *attacker, int attackScore) {
+void BlueMen::defend(int attackScore) {
     cout << getName() << "'s defense dice roll: ";
     int defenseTotal = 0;
     int currentRoll = 0;

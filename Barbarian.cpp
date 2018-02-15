@@ -62,7 +62,7 @@ int Barbarian::attack(Character *defender) {
     return attackTotal;
 }
 
-void Barbarian::defend(Character *attacker, int attackScore) {
+void Barbarian::defend(int attackScore) {
     cout << getName() << "'s defense dice roll: ";
     int defenseTotal = 0;
     int currentRoll = 0;

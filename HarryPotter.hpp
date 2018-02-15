@@ -16,7 +16,8 @@ public:
     HarryPotter();
     ~HarryPotter();
     int attack(Character *defender);
-    void defend(Character *attacker, int attack);
+    void defend(int attack);
+    void resetStrength();
 };
 
 #endif //CS162_FANTASY_COMBAT_GAME_HARRYPOTTER_HPP

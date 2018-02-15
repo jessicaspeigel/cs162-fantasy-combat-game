@@ -14,9 +14,11 @@ using std::string;
 Character::Character(std::string name, int armor, int strength, int numLives) {
     this->name = name;
     this->armor = armor;
-    this->strength = strength;
+    this->currentStrength = strength;
+    this->startStrength = strength;
     this->numLives = numLives;
     this->isDead = false;
+    this->currentLife = 0;
 }
 
 Character::~Character() {
@@ -29,11 +31,11 @@ int Character::getArmor() {
 }
 
 int Character::getStrength() {
-    return strength;
+    return currentStrength;
 }
 
 void Character::setStrength(int strength) {
-    this->strength = strength;
+    this->currentStrength = strength;
     if (strength <= 0) {
         death();
     }
@@ -48,13 +50,26 @@ roll_t Character::getDefense() {
 }
 
 string Character::getName() {
-    return this->name;
+    return name;
 }
 
 void Character::death() {
-    isDead = true;
+    // Increment the current life
+    currentLife++;
+    // Check to see if they're out of lives
+    if (currentLife == numLives) {
+        isDead = true;
+    } else {
+        // Tell the user what happened and how many lives are left
+        cout << getName() << " has lost a life. They have " << (numLives - currentLife) << " life left." << endl;
+        resetStrength();
+    }
 }
 
 bool Character::isAlive() {
     return !isDead;
+}
+
+void Character::resetStrength() {
+    setStrength(startStrength);
 }

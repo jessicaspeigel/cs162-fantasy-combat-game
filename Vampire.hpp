@@ -16,7 +16,7 @@ public:
     Vampire();
     ~Vampire();
     int attack(Character *defender);
-    void defend(Character *attacker, int attack);
+    void defend(int attack);
 };
 
 #endif //CS162_FANTASY_COMBAT_GAME_VAMPIRE_HPP

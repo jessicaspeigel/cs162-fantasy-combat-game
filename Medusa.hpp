@@ -16,7 +16,7 @@ public:
     Medusa();
     ~Medusa();
     int attack(Character *defender);
-    void defend(Character *attacker, int attack);
+    void defend(int attack);
 };
 
 #endif //CS162_FANTASY_COMBAT_GAME_MEDUSA_HPP
